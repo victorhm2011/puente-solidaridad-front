@@ -1,0 +1,32 @@
+@import "../../../../assets/scss/mixins";
+@import "../../../../assets/scss/variables";
+
+.mat-sidenav-container {
+    height: calc(100% - 66px);
+    box-sizing: border-box;
+}
+
+.chevron-button {
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
+    right: 15px;
+    float: right;
+    position: absolute;
+}
+
+.chevron-button.rotated {
+    transform: rotate(180deg);
+}
+
+.mat-text {
+    margin-left: 5px;
+    color: $secondary-background;
+}
+
+.mat-sidenav {
+    background-color: $first-primary-color;
+}
+
+.mat-icon {
+    color: $secondary-background;
+}

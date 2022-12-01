@@ -1,0 +1,270 @@
+<div>
+    <mat-toolbar>
+        <h4 class="title">{{surgeryConstants.TITLE}}</h4>
+        <a *ngIf="(!isCreating) && existReport" (click)="enableDisableForm()">
+            <mat-icon class="button_edit">edit</mat-icon>
+        </a>
+    </mat-toolbar>
+    <div>
+        <div [formGroup]="form">
+            <div *ngIf="!existReport && !isCreating; else elseBlock">
+                <div class="form_container subTitle_container">
+                    <p class="title subTitle">{{surgeryConstants.NOSURGERY}}</p>
+                </div>
+                <div class="form_container">
+                    <button class="mat-raised-button button_save" (click)="isCreating = !isCreating">
+                        {{surgeryConstants.CREATE}}
+                    </button>
+                </div>
+            </div>
+            <ng-template #elseBlock>
+                <div class="form_container subTitle_container">
+                    <p class="title subTitle">{{surgeryConstants.AGENT}}</p>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{surgeryConstants.SOCIAL}}" type="text" formControlName="socialWorker" id="socialWorker" class="form_input-container">
+                            <mat-hint>No más de 500 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('socialWorker', 'required')">El {{surgeryConstants.SOCIAL}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('socialWorker', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input form_container-button">
+                        <div class="form_input-field">
+                            <mat-form-field class="form_input-field">
+                                <mat-label>{{surgeryConstants.RESPONSIBLE}}</mat-label>
+                                <mat-select formControlName="responsibleId" id="responsibleId" class="form_input-container">
+                                    <mat-option *ngFor="let responsible of responsibles" [value]="responsible.responsibleId">{{responsible.responsibleName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('responsibleId', 'required')">El {{surgeryConstants.RESPONSIBLE}} es requerido</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div  *ngIf="isEditing || isCreating" class="button_container">
+                            <a (click)="addResponsible()">
+                                <mat-icon class="button_add">add</mat-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form_container subTitle_container">
+                    <p class="title subTitle">{{surgeryConstants.LOCATION}}</p>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input form_container-button">
+                        <div class="form_input-field">
+                            <mat-form-field class="form_input-field">
+                                <mat-label>{{surgeryConstants.HOSPITAL}}</mat-label>
+                                <mat-select formControlName="hospitalId" id="hospitalId" class="form_input-container">
+                                    <mat-option *ngFor="let hospital of hospitals" [value]="hospital.hospitalId">{{hospital.hospitalName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('hospitalId', 'required')">El {{surgeryConstants.HOSPITAL}} es requerido</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div  *ngIf="isEditing || isCreating" class="button_container">
+                            <a (click)="addHospital()">
+                                <mat-icon class="button_add">add</mat-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <mat-label>{{surgeryConstants.DATE}}</mat-label>
+                            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="pickerDateOfBirth" formControlName="surgeryDate" id="surgeryDate" class="form_input-container">
+                            <mat-hint>Mes/Dia/Año</mat-hint>
+                            <mat-datepicker-toggle matSuffix [for]="pickerDateOfBirth"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerDateOfBirth></mat-datepicker>
+                            <mat-error *ngIf="hasError('surgeryDate', 'required')">La {{surgeryConstants.DATE}} es requerida</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container subTitle_container">
+                    <p class="title subTitle">{{surgeryConstants.IMPLANTED}}</p>
+                </div>
+
+                <div class="form_container subTitle_container">
+                    <p class="title subTitle">{{surgeryConstants.SERIAL}}</p>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{surgeryConstants.PACEMAKER}}" type="text" formControlName="pacemakerSerial" id="pacemakerSerial" class="form_input-container">
+                            <mat-hint>No más de 100 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('pacemakerSerial', 'required')">El {{surgeryConstants.PACEMAKER}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('pacemakerSerial', 'maxlength')">Tienes más de 100 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{surgeryConstants.ATRIAL}}" type="text" formControlName="atrialSerial" id="atrialSerial" class="form_input-container">
+                            <mat-hint>No más de 100 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('atrialSerial', 'required')">El {{surgeryConstants.ATRIAL}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('atrialSerial', 'maxlength')">Tienes más de 100 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{surgeryConstants.VENTRICULAR}}" type="text" formControlName="ventricularSerial" id="ventricularSerial" class="form_input-container">
+                            <mat-hint>No más de 100 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('ventricularSerial', 'required')">El {{surgeryConstants.VENTRICULAR}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('ventricularSerial', 'maxlength')">Tienes más de 100 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{surgeryConstants.LEFT}}" type="text" formControlName="leftVentricularSerial" id="leftVentricularSerial" class="form_input-container">
+                            <mat-hint>No más de 100 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('leftVentricularSerial', 'required')">El {{surgeryConstants.LEFT}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('leftVentricularSerial', 'maxlength')">Tienes más de 100 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container subTitle_container">
+                    <p class="title subTitle">{{surgeryConstants.MODEL}}</p>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{surgeryConstants.PACEMAKER}}" type="text" formControlName="pacemakerModel" id="pacemakerModel" class="form_input-container">
+                            <mat-hint>No más de 500 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('pacemakerModel', 'required')">El {{surgeryConstants.PACEMAKER}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('pacemakerModel', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{surgeryConstants.ATRIAL}}" type="text" formControlName="atrialModel" id="atrialModel" class="form_input-container">
+                            <mat-hint>No más de 500 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('atrialModel', 'required')">El {{surgeryConstants.ATRIAL}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('atrialModel', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{surgeryConstants.VENTRICULAR}}" type="text" formControlName="ventricularModel" id="ventricularModel" class="form_input-container">
+                            <mat-hint>No más de 500 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('ventricularModel', 'required')">El {{surgeryConstants.VENTRICULAR}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('ventricularModel', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{surgeryConstants.LEFT}}" type="text" formControlName="leftVentricularModel" id="leftVentricularModel" class="form_input-container">
+                            <mat-hint>No más de 500 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('leftVentricularModel', 'required')">El {{surgeryConstants.LEFT}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('leftVentricularModel', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input form_container-button">
+                        <div class="form_input-field">
+                            <mat-form-field class="form_input-field">
+                                <mat-label>{{surgeryConstants.PHYSICIAN}}</mat-label>
+                                <mat-select formControlName="physicianSurgeryId" id="physicianSurgeryId" class="form_input-container">
+                                    <mat-option *ngFor="let physician of physicians" [value]="physician.id">{{physician.name}} {{physician.firstLastName}} {{physician.secondLastName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('physicianSurgeryId', 'required')">El {{surgeryConstants.PHYSICIAN}} es requerido</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div  *ngIf="isEditing || isCreating" class="button_container">
+                            <a (click)="addPhysician()">
+                                <mat-icon class="button_add">add</mat-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form_container subTitle_container">
+                    <p class="title subTitle">{{surgeryConstants.FOLLOW}}</p>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input form_container-button">
+                        <div class="form_input-field">
+                            <mat-form-field class="form_input-field">
+                                <mat-label>{{surgeryConstants.PHYSICIAN}}</mat-label>
+                                <mat-select formControlName="physicianFollowId" id="physicianFollowId" class="form_input-container">
+                                    <mat-option *ngFor="let physician of physicians" [value]="physician.id">{{physician.name}} {{physician.firstLastName}} {{physician.secondLastName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('physicianFollowId', 'required')">El {{surgeryConstants.PHYSICIAN}} es requerido</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div  *ngIf="isEditing || isCreating" class="button_container">
+                            <a (click)="addPhysician()">
+                                <mat-icon class="button_add">add</mat-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input form_container-button">
+                        <div class="form_input-field">
+                            <mat-form-field class="form_input-field">
+                                <mat-label>{{surgeryConstants.HOSPITAL}}</mat-label>
+                                <mat-select formControlName="hospitalFollowId" id="hospitalFollowId" class="form_input-container">
+                                    <mat-option *ngFor="let hospital of hospitals" [value]="hospital.hospitalId">{{hospital.hospitalName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('hospitalFollowId', 'required')">El {{surgeryConstants.HOSPITAL}} es requerido</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div  *ngIf="isEditing || isCreating" class="button_container">
+                            <a (click)="addHospital()">
+                                <mat-icon class="button_add">add</mat-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </div> 
+        <div class="form_container">
+            <div class="form_input form_container">
+                <div>
+                    <button *ngIf="isEditing || isCreating" class="mat-raised-button button_save"
+                            [disabled]="!form.valid" (click)="save()">
+                        {{commonConstants.SAVE}}
+                    </button>
+                </div>
+                <div>
+                    <button *ngIf="isEditing" class="mat-raised-button button_close"
+                            (click)="enableDisableForm()">
+                        {{commonConstants.CANCEL}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
+
+.login {
+    background-color: $basic-background;
+    padding: 5%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    display: flex;
+}
+
+.message {
+
+    &_container {
+        display: flex;
+        justify-content: center;
+    }
+    
+    &_text {
+        color: $error-color;
+        font-weight: 500;
+    }
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    @extend .align-element;
+
+    &_form {
+        background-color: $secondary-background;
+        padding: 20px;
+        
+    }
+
+    &_banner {
+        width: 50%;
+        margin-right: 5%;
+    }
+
+    &_banner-image {
+        width: 100%;
+    }
+
+    &_banner-image-container {
+        display: flex;
+        width: 100%;
+        justify-content: right;
+        @extend .center-element;
+    }
+
+    &_banner-eslogan {
+        width: fit-content;
+        @extend .center-element;
+        margin-top: 40px;
+    }
+
+    &_form-input {
+        width: 100%;
+    }
+}
+
+.login-button {
+    width: 100%;
+    background-color: $first-primary-color;
+}
+
+.eslogan {
+    font-size: 1.5rem;
+    @extend .center-element;
+}
+
+@media screen and (max-width:900px) {
+    .login {
+        padding: 140px 30px;
+    }
+
+    .login-container {
+        flex-direction: column;
+        
+        &_form {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        &_banner {
+            width: 407px;
+            margin-right: 0;
+            margin-bottom: 100px;
+        }
+
+        &_banner-eslogan {
+            display: none;
+        }
+    }
+}

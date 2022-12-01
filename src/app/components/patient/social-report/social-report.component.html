@@ -1,0 +1,193 @@
+<div>
+    <mat-toolbar>
+        <h4 class="title">{{reportConstants.SOCIOECONOMI}}</h4>
+        <a *ngIf="(!isCreating) && existReport" (click)="enableDisableForm()">
+            <mat-icon class="button_edit">edit</mat-icon>
+        </a>
+    </mat-toolbar>
+    <div>
+        <div [formGroup]="form">
+            <div *ngIf="!existReport && !isCreating; else elseBlock">
+                <div class="form_container subTitle_container">
+                    <p class="title subTitle">{{reportConstants.NOREPORT}}</p>
+                </div>
+                <div class="form_container">
+                    <button class="mat-raised-button button_save" (click)="isCreating = !isCreating">
+                        {{reportConstants.CREATE}}
+                    </button>
+                </div>
+            </div>
+            <ng-template #elseBlock>
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{reportConstants.AUTHORNAME}}" type="text" formControlName="authorName" id="authorName" class="form_input-container">
+                            <mat-hint>No más de 1000 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('authorName', 'required')">El {{reportConstants.AUTHORNAME}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('authorName', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{reportConstants.SOCIALWORKER}}" type="text" formControlName="socialWorker" id="socialWorker" class="form_input-container">
+                            <mat-hint>No más de 1000 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('socialWorker', 'required')">El {{reportConstants.SOCIALWORKER}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('socialWorker', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{reportConstants.GENERALREFERENCES}}" type="text" formControlName="generalReferences" id="generalReferences" class="form_input-container">
+                            <mat-hint>No más de 2000 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('generalReferences', 'required')">Las {{reportConstants.GENERALREFERENCES}} son requeridas</mat-error>
+                            <mat-error *ngIf="hasError('generalReferences', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{reportConstants.MEDICALDIAGNOSTIC}}" type="text" formControlName="medicalDiagnostic" id="medicalDiagnostic" class="form_input-container">
+                            <mat-hint>No más de 2000 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('medicalDiagnostic', 'required')">El {{reportConstants.MEDICALDIAGNOSTIC}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('medicalDiagnostic', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{reportConstants.TREATMENT}}" type="text" formControlName="treatment" id="treatment" class="form_input-container">
+                            <mat-hint>No más de 2000 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('treatment', 'required')">El {{reportConstants.TREATMENT}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('treatment', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{reportConstants.CURRENTSITUATION}}" type="text" formControlName="currentSituation" id="currentSituation" class="form_input-container">
+                            <mat-hint>No más de 2000 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('currentSituation', 'required')">La {{reportConstants.CURRENTSITUATION}} es requerida</mat-error>
+                            <mat-error *ngIf="hasError('currentSituation', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{reportConstants.TESTIMONY}}" type="text" formControlName="testimony" id="testimony" class="form_input-container">
+                            <mat-hint>No más de 2000 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('testimony', 'required')">El {{reportConstants.TESTIMONY}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('testimony', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{reportConstants.SOCIOECODATA}}" type="text" formControlName="socioEcoData" id="socioEcoData" class="form_input-container">
+                            <mat-hint>No más de 2000 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('socioEcoData', 'required')">Los {{reportConstants.SOCIOECODATA}} son requeridos</mat-error>
+                            <mat-error *ngIf="hasError('socioEcoData', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{reportConstants.SOCIALCONCEPT}}" type="text" formControlName="socialConcept" id="socialConcept" class="form_input-container">
+                            <mat-hint>No más de 2000 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('socialConcept', 'required')">El {{reportConstants.SOCIALCONCEPT}} es requerido</mat-error>
+                            <mat-error *ngIf="hasError('socialConcept', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <mat-label>{{reportConstants.CLASSIFICATION}}</mat-label>
+                            <mat-select formControlName="classification" id="classification" class="form_input-container">
+                                <mat-option *ngFor="let classification of classifications | keyvalue" [value]="classification.value">{{classification.value}}</mat-option>
+                            </mat-select>
+                            <mat-hint>La {{reportConstants.CLASSIFICATION}} es requerida</mat-hint>
+                            <mat-error *ngIf="hasError('classification', 'required')">La {{reportConstants.CLASSIFICATION}} es requerida</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{reportConstants.PATIENTCELLPHONEREF}}" type="number" formControlName="patientCellPhoneRef" id="patientCellPhoneRef" class="form_input-container">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <input matInput placeholder="{{reportConstants.REFERENCEADDRESS}}" type="text" formControlName="referenceAddress" id="referenceAddress" class="form_input-container">
+                            <mat-hint>No más de 1000 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('referenceAddress', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <textarea matInput placeholder="{{reportConstants.DESCRIPTIONFAMILYHOME}}" type="text" formControlName="descriptionFamilyHome" id="descriptionFamilyHome" class="form_input-container"></textarea>
+                            <mat-hint>No más de 2000 carácteres</mat-hint>
+                            <mat-error *ngIf="hasError('descriptionFamilyHome', 'required')">La {{reportConstants.DESCRIPTIONFAMILYHOME}} es requerida</mat-error>
+                            <mat-error *ngIf="hasError('descriptionFamilyHome', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form_container">
+                    <div class="form_input">
+                        <mat-form-field class="form_input-field">
+                            <mat-label>{{reportConstants.PROGRAM}}</mat-label>
+                            <mat-select formControlName="program" id="program" class="form_input-container">
+                                <mat-option *ngFor="let program of programs | keyvalue" [value]="program.value">{{program.value}}</mat-option>
+                            </mat-select>
+                            <mat-hint>El {{reportConstants.PROGRAM}} es requerido</mat-hint>
+                            <mat-error *ngIf="hasError('program', 'required')">El {{reportConstants.PROGRAM}} es requerido</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </ng-template>
+        </div> 
+        <div class="form_container">
+            <div class="form_input form_container">
+                <div>
+                    <button *ngIf="isEditing || isCreating" class="mat-raised-button button_save"
+                            [disabled]="!form.valid" (click)="save()">
+                        {{reportConstants.SAVE}}
+                    </button>
+                </div>
+                <div>
+                    <button *ngIf="isEditing" class="mat-raised-button button_close"
+                            (click)="enableDisableForm()">
+                        {{reportConstants.CANCEL}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

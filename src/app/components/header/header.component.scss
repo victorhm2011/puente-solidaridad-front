@@ -1,0 +1,34 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
+
+.header {
+    background-color: $second-additional-color;
+
+    &_item {
+        font-size: 1.125rem;  
+    }
+
+    &_pages {
+        text-align: center;
+    }
+
+    &--home {
+        background-color: $first-primary-color;
+    }
+
+    &_color {
+        color: $first-primary-color;  
+    }
+
+    &_color-home {
+        color: $secondary-background !important;  
+    }
+}
+
+.navbar {
+    min-height: 66px;
+
+    &--home {
+        display: none;
+    }
+}

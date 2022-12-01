@@ -1,0 +1,58 @@
+<div>
+    <mat-toolbar>
+        <h4 class="title">{{title}}</h4>
+    </mat-toolbar>
+
+    <mat-form-field appearance="outline" class="search_container">
+        <mat-label class="search_text">Buscador</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo: Victor Montaño" #input>
+        <mat-icon matSuffix class="search_text">search</mat-icon>
+    </mat-form-field>
+
+    <div>
+        <table mat-table
+        [dataSource]="dataSource" multiTemplateDataRows matSort
+        class="mat-elevation-z8 table_container">
+            <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="table_header"> {{column.header}} </th>
+                <td mat-cell *matCellDef="let row"> {{column.cell(row)}} </td>
+            </ng-container>
+            <ng-container matColumnDef="updated">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="table_header">{{updatedColumn}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.updated | date :'dd-MM-yyyy, h:mm a':'-0800'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="valuationReportId">
+                <th mat-header-cell *matHeaderCellDef class="table_header">
+                    <div class="column_container">{{valuationReportColumn}}</div>
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <div *ngIf="element.valuationReportId != null; else elseBlock" class="column_container">
+                        <mat-icon class="valuation-icon">check_circle</mat-icon>
+                    </div>
+                    <ng-template #elseBlock>
+                        <div class="column_container"><mat-icon class="valuation-icon">highlight_off</mat-icon></div>
+                    </ng-template>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="expandedDetail">
+                <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr
+                mat-row
+                (click)="showPatient(row)"
+                class="table-element-row"
+                *matRowDef="let row; columns: displayedColumns;"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="table-detail-row"></tr>
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No existe el elemento: {{input.value}}</td>
+            </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[20, 50, 100]"
+                 showFirstLastButtons 
+                 aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </div>
+</div>

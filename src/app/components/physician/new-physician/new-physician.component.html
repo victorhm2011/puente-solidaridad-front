@@ -1,0 +1,57 @@
+<h2 mat-dialog-title class="form_title">{{physicianConstants.NEWPHYSICIAN}}</h2>
+<mat-dialog-content [formGroup]="form">
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{physicianConstants.NAME}}" type="text" formControlName="name" id="name" class="form_input-container">
+            <mat-hint>No más de 500 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('name', 'required')">El {{physicianConstants.NAME}} es requerido</mat-error>
+            <mat-error *ngIf="hasError('name', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{physicianConstants.FIRSTLASTNAME}}" type="text" formControlName="firstLastName" id="firstLastName" class="form_input-container">
+            <mat-hint>No más de 500 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('firstLastName', 'required')">El {{physicianConstants.FIRSTLASTNAME}} es requerido</mat-error>
+            <mat-error *ngIf="hasError('firstLastName', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{physicianConstants.SECONDLASTNAME}}" type="text" formControlName="secondLastName" id="secondLastName" class="form_input-container">
+            <mat-hint>No más de 500 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('secondLastName', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{physicianConstants.HOSPITAL}}" type="text" formControlName="hospital" id="hospital" class="form_input-container">
+            <mat-hint>No más de 500 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('hospital', 'required')">El {{physicianConstants.HOSPITAL}} es requerido</mat-error>
+            <mat-error *ngIf="hasError('hospital', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{physicianConstants.PHONE}}" type="number" formControlName="phone" id="phone" class="form_input-container">
+        </mat-form-field>
+    </div>
+    
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="form_container form_container-button">
+        <button class="mat-raised-button mat-primary button_save"
+                (click)="save()" [disabled]="!form.valid">
+            {{commonConstants.ADD}}
+        </button>
+        <button class="mat-raised-button button_close"
+                (click)="close()">
+            {{commonConstants.CANCEL}}
+        </button>
+    </div>
+</mat-dialog-actions>

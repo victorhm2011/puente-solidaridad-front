@@ -1,0 +1,136 @@
+<h2 mat-dialog-title class="form_title">{{aidConstants.UPDATEAID}}</h2>
+<mat-dialog-content [formGroup]="form">
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{aidConstants.REFERENCE}}" type="text" formControlName="reference" id="reference" class="form_input-container">
+            <mat-hint>No más de 2000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('reference', 'required')">La {{aidConstants.REFERENCE}} es requerida</mat-error>
+            <mat-error *ngIf="hasError('reference', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{aidConstants.DIAGNOSIS}}" type="text" formControlName="diagnosis" id="diagnosis" class="form_input-container">
+            <mat-hint>No más de 2000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('diagnosis', 'required')">El {{aidConstants.DIAGNOSIS}} es requerido</mat-error>
+            <mat-error *ngIf="hasError('diagnosis', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container"> 
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{aidConstants.TREATMENT}}" type="text" formControlName="treatment" id="treatment" class="form_input-container">
+            <mat-hint>No más de 2000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('treatment', 'required')">El {{aidConstants.TREATMENT}} es requerido</mat-error>
+            <mat-error *ngIf="hasError('treatment', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <mat-label>{{aidConstants.AIDDATE}}</mat-label>
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="aidDate" formControlName="aidDate" id="aidDate" class="form_input-container">
+            <mat-hint>Mes/Dia/Año</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="aidDate"></mat-datepicker-toggle>
+            <mat-datepicker #aidDate></mat-datepicker>
+            <mat-error *ngIf="hasError('aidDate', 'required')">La {{aidConstants.AIDDATE}} es requerida</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <div class="form_input form_container-button-physician">
+            <div class="form_input-field">
+                <mat-form-field class="form_input-field">
+                    <mat-label>{{aidConstants.PHYSICIAN}}</mat-label>
+                    <mat-select formControlName="physicianId" id="physicianId" class="form_input-container">
+                        <mat-option *ngFor="let physician of physicians" [value]="physician.id">{{physician.name}} {{physician.firstLastName}} {{physician.secondLastName}}</mat-option>
+                    </mat-select>
+                    <mat-hint>El {{aidConstants.PHYSICIAN}} es requerido</mat-hint>
+            <mat-error *ngIf="hasError('treatment', 'required')">El {{aidConstants.PHYSICIAN}} es requerido</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="button_container">
+                <a (click)="addPhysician()">
+                    <mat-icon class="button_add">add</mat-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{aidConstants.HOSPITAL}}" type="text" formControlName="hospital" id="hospital" class="form_input-container">
+            <mat-hint>No más de 1000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('hospital', 'required')">El {{aidConstants.HOSPITAL}} es requerido</mat-error>
+            <mat-error *ngIf="hasError('hospital', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{aidConstants.INPUT}}" type="number" formControlName="input" id="input" class="form_input-container">
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{aidConstants.SOCIALCONCEPT}}" type="text" formControlName="socialConcept" id="socialConcept" class="form_input-container">
+            <mat-hint>No más de 2000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('socialConcept', 'required')">El {{aidConstants.SOCIALCONCEPT}} es requerido</mat-error>
+            <mat-error *ngIf="hasError('socialConcept', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{aidConstants.SOCIOECOSITUATION}}" type="text" formControlName="socioEcoSituation" id="socioEcoSituation" class="form_input-container">
+            <mat-hint>No más de 2000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('socioEcoSituation', 'required')">La {{aidConstants.SOCIOECOSITUATION}} es requerida</mat-error>
+            <mat-error *ngIf="hasError('socioEcoSituation', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container"> 
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{aidConstants.MONTHLYINCOME}}" type="text" formControlName="monthlyIncome" id="monthlyIncome" class="form_input-container">
+            <mat-hint>No más de 2000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('monthlyIncome', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container"> 
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{aidConstants.SOCIALWORKER}}" type="text" formControlName="socialWorker" id="socialWorker" class="form_input-container">
+            <mat-hint>No más de 1000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('socialWorker', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <div class="form_input">
+            <mat-form-field class="form_input-field">
+                <mat-label>{{aidColumsConstants.TYPE}}</mat-label>
+                <mat-select formControlName="aidType" id="aidType" class="form_input-container">
+                    <mat-option *ngFor="let aidType of aidTypes | keyvalue" [value]="aidType.value">{{aidType.value}}</mat-option>
+                </mat-select>
+                <mat-hint>El {{aidColumsConstants.TYPE}} es requerido</mat-hint>
+                <mat-error *ngIf="hasError('aidType', 'required')">El {{aidColumsConstants.TYPE}} es requerido</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="form_container form_container-button">
+        <button class="mat-raised-button mat-primary button_save"
+                (click)="save()" [disabled]="!form.valid">
+            {{commonConstants.SAVE}}
+        </button>
+        <button class="mat-raised-button button_close"
+                (click)="close()">
+            Cerrar
+        </button>
+    </div>
+</mat-dialog-actions>

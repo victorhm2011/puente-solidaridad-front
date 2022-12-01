@@ -1,0 +1,99 @@
+@import "../../../../assets/scss/mixins";
+@import "../../../../assets/scss/variables";
+
+.table {
+
+  &_container {
+    width: 100%;
+  }
+
+  &_header {
+    font-size: 1.0rem; 
+    color: $first-primary-color;
+  }
+
+  &_detail {
+    width: 50%;
+  }
+
+  &_element-detail {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_detail-data {
+    width: 100%;
+    display: flex;
+  }
+
+  &_description {
+    color: $first-primary-color;
+    font-weight: 500;
+  }
+
+  &_data {
+    margin-left: 4px;
+  }
+
+  &_data-first {
+    padding-right: 15px;
+  }
+
+  &_space {
+    padding-top: 10px;
+    margin-bottom: 15px;
+  }
+
+  &_detail-last {
+    margin-bottom: 15px;
+  }
+}
+
+.delete-icon {
+  color: $third-primary-color;
+}
+
+.edit {
+
+  &_icon {
+    color: $first-primary-color;
+  }
+  
+  &_button {
+    margin-right: 10px;
+  }
+}
+
+.title {
+  @extend .center-element;
+  color: $first-primary-color;
+}
+
+tr.table-detail-row {
+  height: 0;
+}
+  
+tr.table-element-row:not(.table-expanded-row):hover {
+  background: $table-hover;
+}
+  
+tr.table-element-row:not(.table-expanded-row):active {
+  background: $table-active;
+}
+  
+.table-element-row td {
+  border-bottom-width: 0;
+}
+
+.message {
+  font-weight: 500;
+  font-size: 16px;
+  color: $third-primary-color;
+
+  &_container {
+    width: 100%;
+    display: flex;
+    justify-content:center;
+  }
+}

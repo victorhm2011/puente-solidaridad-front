@@ -1,0 +1,64 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
+
+.home {
+    background-color: $basic-background;
+    width: 100%;
+    margin-bottom: 0;
+    height: 100%;
+
+    &_card {
+        width: 300px;
+        height: 150px;
+        margin: 20px 50px 20px 50px;
+        border-radius: 15px;
+    }
+
+    &_categories {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        height: 100%;
+        padding-top: 3%;
+    }
+
+    &_card-image {
+        width: 300px;
+        height: 150px;
+        border-radius: 15px;
+        opacity: 0.3;
+    }
+
+    &_card-label {
+        margin: 0;
+        font-size: 1.875rem;
+        color: $first-primary-color; 
+    }
+
+    &_card-label-container {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        justify-content:center;
+        top: 60px;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .home {
+
+        &_card {
+            width: 40%;
+            margin: 30px 10px 30px 10px;
+        }
+
+        &_categories {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        &_card-image {
+            width: 100%;
+        }
+    }
+}

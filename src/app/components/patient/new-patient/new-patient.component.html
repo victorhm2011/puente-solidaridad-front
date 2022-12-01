@@ -1,0 +1,429 @@
+<div>
+    <mat-toolbar>
+        <h4 class="title">{{title}}</h4>
+    </mat-toolbar>
+    <div>
+        <div [formGroup]="form">
+
+            <div class="form_container">
+                <p class="title subTitle">{{patientConstants.PERSONALDATA}}</p>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Apellido Paterno" type="text" formControlName="patientFirstLastName" id="patientFirstLastName" class="form_input-container">
+                        <mat-hint>No más de 500 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('patientFirstLastName', 'required')">El Apellido Paterno es requerido</mat-error>
+                        <mat-error *ngIf="hasError('patientFirstLastName', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Apellido Materno" type="text" formControlName="patientSecondLastName" id="patientSecondLastName" class="form_input-container">
+                        <mat-hint>No más de 500 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('patientSecondLastName', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Nombres" type="text" formControlName="patientName" id="patientName" class="form_input-container">
+                        <mat-hint>No más de 500 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('patientName', 'required')">El nombre es requerido</mat-error>
+                        <mat-error *ngIf="hasError('patientName', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <mat-label>Fecha de nacimiento</mat-label>
+                        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="pickerDateOfBirth" formControlName="patientDateOfBirth" id="patientDateOfBirth" class="form_input-container">
+                        <mat-hint>Mes/Dia/Año</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="pickerDateOfBirth"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerDateOfBirth></mat-datepicker>
+                        <mat-error *ngIf="hasError('patientDateOfBirth', 'required')">La fecha de nacimiento es requerida</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <mat-label>Género</mat-label>
+                        <mat-select formControlName="genderId" id="genderId" class="form_input-container">
+                            <mat-option *ngFor="let gender of genders" [value]="gender.genderId">{{gender.genderType}}</mat-option>
+                        </mat-select>
+                        <mat-hint>El género es requerido</mat-hint>
+                        <mat-error *ngIf="hasError('genderId', 'required')">El género es requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Ocupación" type="text" formControlName="patientOccupation" id="patientOccupation" class="form_input-container">
+                        <mat-hint>No más de 500 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('patientOccupation', 'required')">La occupación es requerida</mat-error>
+                        <mat-error *ngIf="hasError('patientOccupation', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Estado Civil" type="text" formControlName="civilStatus" id="civilStatus" class="form_input-container">
+                        <mat-hint>No más de 500 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('civilStatus', 'required')">El estado civil es requerido</mat-error>
+                        <mat-error *ngIf="hasError('civilStatus', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Lugar de residencia" type="text" formControlName="placeOfResidence" id="placeOfResidence" class="form_input-container">
+                        <mat-hint>No más de 2000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('placeOfResidence', 'required')">El lugar de residencia es requerido</mat-error>
+                        <mat-error *ngIf="hasError('placeOfResidence', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Lugar de nacimiento" type="text" formControlName="placeOfBirth" id="placeOfBirth" class="form_input-container">
+                        <mat-hint>No más de 2000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('placeOfBirth', 'required')">El lugar de residencia es requerido</mat-error>
+                        <mat-error *ngIf="hasError('placeOfBirth', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Número Celular del paciente" type="number" formControlName="patientCellphone" id="patientCellphone" class="form_input-container">
+                        <mat-error *ngIf="hasError('patientCellphone', 'required')">El Número de celular es requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Número de Teléfono del paciente" type="number" formControlName="patientPhone" id="patientPhone" class="form_input-container">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <textarea matInput placeholder="Diagnóstico Médico" type="text" formControlName="medicalDiagnostic" id="medicalDiagnostic" class="form_input-container"></textarea>
+                        <mat-hint>No más de 2000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('medicalDiagnostic', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <textarea matInput placeholder="{{patientConstants.REFERENCE}}" type="text" formControlName="reference" id="reference" class="form_input-container"></textarea>
+                        <mat-hint>No más de 2000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('reference', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input form_container-button">
+                    <div class="form_input-field">
+                        <mat-form-field class="form_input-field">
+                            <mat-label>Médico Tratante</mat-label>
+                            <mat-select formControlName="treatingPhysicianId" id="treatingPhysicianId" class="form_input-container">
+                                <mat-option *ngFor="let physician of physicians" [value]="physician.id">{{physician.name}} {{physician.firstLastName}} {{physician.secondLastName}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="button_container">
+                        <a (click)="addPhysician()">
+                            <mat-icon class="button_add">add</mat-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <mat-label>Fecha de Cirugía</mat-label>
+                        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="pickerSurgeryDate" formControlName="surgeryDate" id="surgeryDate" class="form_input-container">
+                        <mat-hint>Mes/Dia/Año</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="pickerSurgeryDate"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerSurgeryDate></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <mat-label>Fecha de Internación</mat-label>
+                        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="pickerHospitalizationDate" formControlName="hospitalizationDate" id="hospitalizationDate" class="form_input-container">
+                        <mat-hint>Mes/Dia/Año</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="pickerHospitalizationDate"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerHospitalizationDate></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container subTitle_container">
+                <p class="title subTitle">{{titleFamily}}</p>
+            </div>
+    
+            <div class="relative-list">
+                <app-relative-list [relativesList]=relatives [update]=update></app-relative-list>
+            </div>
+    
+            <div class="form_container">
+                <button class="mat-raised-button button_save" (click)="addRelative()">
+                    Añadir Familiar
+                </button>
+            </div>
+
+            <div class="form_container subTitle_container">
+                <p class="title subTitle">{{patientConstants.FAMILYSITUATION}}</p>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <textarea matInput placeholder="Situación Familiar" type="text" formControlName="familySituation" id="familySituation" class="form_input-container"></textarea>
+                        <mat-hint>No más de 2000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('familySituation', 'required')">La Situación Familiar es requerida</mat-error>
+                        <mat-error *ngIf="hasError('familySituation', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div class="form_container subTitle_container">
+            <p class="title subTitle">{{titleSocioEco}}</p>
+        </div>
+
+        <div [formGroup]="formSocioEcoSituation">
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Número de Miembros Dependientes" type="number" formControlName="dependentMembers" id="dependentMembers" class="form_input-container">
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('dependentMembers', 'required')">El Número de Miembros Dependientes es requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Total de Ingresos" type="number" formControlName="totalIncome" id="totalIncome" class="form_input-container">
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('totalIncome', 'required')">El Total de Ingresos es requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Vivienda / Zona" type="text" formControlName="housing" id="housing" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('housing', 'required')">La Vivienda / Zona es requerida</mat-error>
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('housing', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Tenencia" type="text" formControlName="tenancy" id="tenancy" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('tenancy', 'required')">La Tenencia es requerida</mat-error>
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('tenancy', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Nº de Habitaciones" type="number" formControlName="numberOfRooms" id="numberOfRooms" class="form_input-container">
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('numberOfRooms', 'required')">El Nº de Habitaciones es requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container subTitle_container">
+                <p class="title subTitle">{{patientConstants.MONTHLYEXPENSES}}</p>
+            </div>
+
+            <div class="form_container">
+                <div class="form_expense-input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{reportConstants.WATERCONSUMPTION}}" type="text" formControlName="waterConsumptionDetail" id="waterConsumptionDetail" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('waterConsumptionDetail', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form_input-field-expense">
+                        <input matInput placeholder="{{patientConstants.EXPENSE}}" type="number" (keyup)="setExpense($any($event.target).value, 0)"
+                            formControlName="waterConsumption" id="waterConsumption" class="form_input-container">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_expense-input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{reportConstants.ELECTRICITYCONSUMPTION}}" type="text" formControlName="electricityConsumptionDetail" id="electricityConsumptionDetail" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('electricityConsumptionDetail', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form_input-field-expense">
+                        <input matInput placeholder="{{patientConstants.EXPENSE}}" type="number" (keyup)="setExpense($any($event.target).value, 1)"
+                            formControlName="electricityConsumption" id="electricityConsumption" class="form_input-container">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_expense-input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{reportConstants.LIVINGPLACECONSUMPTION}}" type="text" formControlName="livingPlaceConsumptionDetail" id="livingPlaceConsumptionDetail" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('livingPlaceConsumptionDetail', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form_input-field-expense">
+                        <input matInput placeholder="{{patientConstants.EXPENSE}}" type="number" (keyup)="setExpense($any($event.target).value, 2)"
+                            formControlName="livingPlaceConsumption" id="livingPlaceConsumption" class="form_input-container">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_expense-input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{reportConstants.FEEDINGCONSUMPTION}}" type="text" formControlName="feedingConsumptionDetail" id="feedingConsumptionDetail" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('feedingConsumptionDetail', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form_input-field-expense">
+                        <input matInput placeholder="{{patientConstants.EXPENSE}}" type="number" (keyup)="setExpense($any($event.target).value, 3)"
+                            formControlName="feedingConsumption" id="feedingConsumption" class="form_input-container">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_expense-input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{reportConstants.EDUCATIONCONSUMPTION}}" type="text" formControlName="educationConsumptionDetail" id="educationConsumptionDetail" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('educationConsumptionDetail', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form_input-field-expense">
+                        <input matInput placeholder="{{patientConstants.EXPENSE}}" type="number" (keyup)="setExpense($any($event.target).value, 4)"
+                            formControlName="educationConsumption" id="educationConsumption" class="form_input-container">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_expense-input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{reportConstants.TELEPHONECONSUMPTION}}" type="text" formControlName="telephoneConsumptionDetail" id="telephoneConsumptionDetail" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('telephoneConsumptionDetail', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form_input-field-expense">
+                        <input matInput placeholder="{{patientConstants.EXPENSE}}" type="number" (keyup)="setExpense($any($event.target).value, 5)"
+                            formControlName="telephoneConsumption" id="telephoneConsumption" class="form_input-container">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_expense-input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{reportConstants.TRANSPORTATIONCONSUMPTION}}" type="text" formControlName="transportationConsumptionDetail" id="transportationConsumptionDetail" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('transportationConsumptionDetail', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form_input-field-expense">
+                        <input matInput placeholder="{{patientConstants.EXPENSE}}" type="number" (keyup)="setExpense($any($event.target).value, 6)"
+                            formControlName="transportationConsumption" id="transportationConsumption" class="form_input-container">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_expense-input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{reportConstants.HEALTHCONSUMPTION}}" type="text" formControlName="healthConsumptionDetail" id="healthConsumptionDetail" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('healthConsumptionDetail', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form_input-field-expense">
+                        <input matInput placeholder="{{patientConstants.EXPENSE}}" type="number" (keyup)="setExpense($any($event.target).value, 7)"
+                            formControlName="healthConsumption" id="healthConsumption" class="form_input-container">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_expense-input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{reportConstants.OTHERCONSUMPTION}}" type="text" formControlName="otherConsumptionDetail" id="otherConsumptionDetail" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasErrorSocioEcoSituation('otherConsumptionDetail', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form_input-field-expense">
+                        <input matInput placeholder="{{patientConstants.EXPENSE}}" type="number" (keyup)="setExpense($any($event.target).value, 8)"
+                            formControlName="otherConsumption" id="otherConsumption" class="form_input-container">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input form_container-button">
+                    <div>
+                        <p class="title subTitle">{{patientConstants.TOTALMONTHLYEXPENSES}}</p>
+                    </div>
+                    <div class="form_container-expense">
+                        <p class="subTitle">{{totalExpenses}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form_container">
+            <div class="form_input form_container">
+                <div>
+                    <button class="mat-raised-button button_save" (click)="save()"
+                            [disabled]="!form.valid || !formSocioEcoSituation.valid">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

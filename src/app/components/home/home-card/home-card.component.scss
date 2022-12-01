@@ -1,0 +1,47 @@
+@import "../../../../assets/scss/mixins";
+@import "../../../../assets/scss/variables";
+
+.home {
+
+    &_card {
+        width: 300px;
+        height: 150px;
+        margin: 20px 100px 50px 100px;
+        border-radius: 15px;
+    }
+
+    &_card-image {
+        width: 300px;
+        height: 150px;
+        border-radius: 15px;
+        opacity: 0.3;
+    }
+
+    &_card-label {
+        margin: 0;
+        font-size: 1.875rem;
+        color: $first-primary-color; 
+    }
+
+    &_card-label-container {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        justify-content:center;
+        top: 60px;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .home {
+
+        &_card {
+            width: 40%;
+            margin: 30px 10px 30px 10px;
+        }
+
+        &_card-image {
+            width: 100%;
+        }
+    }
+}

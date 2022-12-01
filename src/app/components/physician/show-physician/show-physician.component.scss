@@ -1,0 +1,100 @@
+@import "../../../../assets/scss/mixins";
+@import "../../../../assets/scss/variables";
+
+.title {
+    @extend .center-element;
+    color: $first-primary-color;
+}
+
+.subTitle {
+    font-size: large;
+    font-weight: 500;
+
+    &_container {
+        padding-top: 35px;
+    }
+}
+
+.form {
+    &_container {
+        width: 100%;
+        display: flex;
+        justify-content:center;
+        margin-top: 25px;
+    }
+
+    &_input {
+        width: 50%;
+    }
+
+    &_select {
+        width: 30%;
+    }
+
+    &_input-field {
+        width: 100%;
+    }
+
+    &_container-select {
+        width: 100%;
+        display: flex;
+        justify-content:space-between;
+        padding: 25px 20px 0 20px;
+    }
+
+    &_input-container {
+        margin-top: 8px;
+    }
+}
+
+.button {
+
+    &_save{
+        background-color: $first-primary-color;
+        color: $secondary-background;
+        margin-bottom: 20px;
+    }
+    
+    &_edit {
+        color: $first-primary-color;
+    }
+
+    &_close {
+        color: $first-primary-color;
+        margin-left: 20px;
+    }
+
+    &_delete {
+        color: $third-primary-color;
+        margin-left: 10px;
+    }
+}
+
+::ng-deep .mat-form-field-disabled input.mat-input-element {
+    color: $common-color;
+}
+
+::ng-deep .mat-form-field-disabled textarea.mat-input-element {
+    color: $common-color;
+}
+
+::ng-deep .mat-form-field-disabled .mat-selected {
+    color: $common-color;
+}
+
+::ng-deep .mat-form-field-disabled .mat-select-value-text {
+    color: $common-color !important;
+}
+  
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: $first-primary-color !important;
+}
+
+::ng-deep mat-form-field.mat-form-field-should-float label {
+    font-size: 22px !important;
+}
+
+::ng-deep mat-form-field label {
+    font-size: 16px !important;
+    color: $first-primary-color !important;
+}

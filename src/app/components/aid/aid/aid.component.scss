@@ -1,0 +1,76 @@
+@import "../../../../assets/scss/mixins";
+@import "../../../../assets/scss/variables";
+
+.title {
+    @extend .center-element;
+    color: $first-primary-color;
+}
+
+.form {
+    &_container {
+        width: 100%;
+        display: flex;
+        justify-content:center;
+        margin-top: 25px;
+        min-width: 370px;
+    }
+
+    &_input {
+        width: 100%;
+    }
+
+    &_select {
+        width: 30%;
+    }
+
+    &_input-field {
+        width: 100%;
+    }
+
+    &_container-select {
+        width: 100%;
+        display: flex;
+        justify-content:space-between;
+        padding-top: 25px;
+    }
+
+    &_container-button {
+        margin-bottom: 25px;
+    }
+
+    &_title {
+        width: 100%;
+        display: flex;
+        justify-content:center;
+        color: $first-primary-color;
+    }
+
+    &_input-container {
+        margin-top: 8px;
+    }
+
+    &_container-button-physician {
+        display: flex;
+    }
+}
+
+.button {
+
+    &_save {
+        background-color: $first-primary-color;
+        color: $secondary-background;
+        margin-right: 20px;
+    }
+
+    &_close {
+        color: $first-primary-color;
+    }
+    
+    &_container{
+        margin: 18px 0 0 10px;
+    }
+
+    &_add{
+        color: $first-primary-color;
+    }
+}

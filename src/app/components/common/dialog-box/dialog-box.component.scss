@@ -1,0 +1,37 @@
+@import "../../../../assets/scss/mixins";
+@import "../../../../assets/scss/variables";
+
+.dialog {
+
+    &_title {
+        width: 100%;
+        display: flex;
+        justify-content:center;
+        color: $first-primary-color;
+    }
+
+    &_container {
+        width: 100%;
+        display: flex;
+        justify-content:center;
+        margin-top: 25px;
+    }
+
+    &_container-button {
+        margin-bottom: 25px;
+    }
+}
+
+.button {
+
+    &_action {
+        background-color: $first-primary-color;
+        color: $secondary-background;
+        margin-right: 20px;
+    }
+
+    &_close {
+        color: $first-primary-color;
+    }
+    
+}

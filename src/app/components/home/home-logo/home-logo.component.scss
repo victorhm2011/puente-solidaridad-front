@@ -1,0 +1,28 @@
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/mixins";
+
+.logo-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+
+    &_image {
+        width: fit-content;
+    }
+}
+
+.logo-image {
+    width: 200px;
+}
+
+.welcome {
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    &_greeting {
+        margin-bottom: 0;
+        font-size: 1.5rem;
+        color: $second-primary-color;
+    }
+}

@@ -1,0 +1,31 @@
+export interface ValuationReport {
+    valuationReportId: string;
+    authorName: string;
+    socialWorker: string;
+    generalReferences: string;
+    treatment: string;
+    currentSituation: string;
+    testimony: string;
+    socioEcoData: string;
+    socialConcept: string;
+    classification: string;
+    patientCellPhoneRef: number;
+    patientPhoneRef: number;
+    municipalityPermanent: string;
+    populationPermanent: string;
+    municipalityReference: string;
+    populationReference: string;
+    cityReferenceId: string;
+    referenceAddress: string;
+    waterConsumption: number;
+    electricityConsumption: number;
+    livingPlaceConsumption: number;
+    feedingConsumption: number;
+    educationConsumption: number;
+    telephoneConsumption: number;
+    transportationConsumption: number;
+    healthConsumption: number;
+    otherConsumption: number;
+    totalFamilyExpenditure: number;
+    descriptionFamilyHome: string;
+}

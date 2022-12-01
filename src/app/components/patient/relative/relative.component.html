@@ -1,0 +1,91 @@
+<h2 mat-dialog-title class="form_title">{{title}}</h2>
+<mat-dialog-content [formGroup]="form">
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="Apellido Paterno" type="text" formControlName="relativeFirstLastName" id="relativeFirstLastName" class="form_input-container">
+            <mat-hint>No más de 1000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('relativeFirstLastName', 'required')">El Apellido Paterno es requerido</mat-error>
+            <mat-error *ngIf="hasError('relativeFirstLastName', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="Apellido Materno" type="text" formControlName="relativeSecondLastName" id="relativeSecondLastName" class="form_input-container">
+            <mat-hint>No más de 1000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('relativeSecondLastName', 'required')">El Apellido Materno es requerido</mat-error>
+            <mat-error *ngIf="hasError('relativeSecondLastName', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="Nombre" type="text" formControlName="relativeName" id="relativeName" class="form_input-container">
+            <mat-hint>No más de 1000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('relativeName', 'required')">El nombre es requerido</mat-error>
+            <mat-error *ngIf="hasError('relativeName', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="relativeDateOfBirth" formControlName="relativeDateOfBirth" id="patientDateOfBirth" class="form_input-container">
+            <mat-hint>Mes/Dia/Año</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="relativeDateOfBirth"></mat-datepicker-toggle>
+            <mat-datepicker #relativeDateOfBirth></mat-datepicker>
+            <mat-error *ngIf="hasError('relativeDateOfBirth', 'required')">La fecha de nacimiento es requerida</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="Ocupación" type="text" formControlName="relativeOccupation" id="relativeOccupation" class="form_input-container">
+            <mat-hint>No más de 500 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('relativeOccupation', 'required')">La ocupación es requerido</mat-error>
+            <mat-error *ngIf="hasError('relativeOccupation', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="Estado Civil" type="text" formControlName="civilStatus" id="civilStatus" class="form_input-container">
+            <mat-hint>No más de 500 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('civilStatus', 'required')">El estado civil es requerido</mat-error>
+            <mat-error *ngIf="hasError('civilStatus', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="Parentesco" type="text" formControlName="relationship" id="relationship" class="form_input-container">
+            <mat-hint>No más de 500 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('relationship', 'required')">El parentesco es requerido</mat-error>
+            <mat-error *ngIf="hasError('relationship', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <textarea matInput placeholder="Observaciones" type="text" formControlName="observations" id="observations" class="form_input-container"></textarea>
+            <mat-hint>No más de 2000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('observations', 'required')">Las observaciones son requeridas</mat-error>
+            <mat-error *ngIf="hasError('observations', 'maxlength')">Tienes más de 2000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+    
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="form_container form_container-button">
+        <button class="mat-raised-button mat-primary button_save"
+                (click)="save()" [disabled]="!form.valid">
+            {{button}}
+        </button>
+        <button class="mat-raised-button button_close"
+                (click)="close()">
+            Cerrar
+        </button>
+    </div>
+</mat-dialog-actions>

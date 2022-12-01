@@ -1,0 +1,111 @@
+<div>
+    <mat-toolbar>
+        <h4 class="title">{{commonConstants.USER}}</h4>
+        <a *ngIf="(!isCreating) && existReport" (click)="enableDisableForm()">
+            <mat-icon class="button_edit">edit</mat-icon>
+        </a>
+        <a *ngIf="(!isCreating) && existReport" (click)="openDeleteDialog(user)">
+            <mat-icon class="button_delete">delete</mat-icon>
+        </a>
+    </mat-toolbar>
+    <div>
+        <div [formGroup]="form">
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{userFieldsConstants.NAME}}" type="text" formControlName="name" id="name" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('name', 'required')">El {{userFieldsConstants.NAME}} es requerido</mat-error>
+                        <mat-error *ngIf="hasError('name', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+           
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{userFieldsConstants.FIRSTLASTNAME}}" type="text" formControlName="firstLastName" id="firstLastName" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('firstLastName', 'required')">El {{userFieldsConstants.FIRSTLASTNAME}} es requerido</mat-error>
+                        <mat-error *ngIf="hasError('firstLastName', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{userFieldsConstants.SECONDLASTNAME}}" type="text" formControlName="secondLastName" id="secondLastName" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('secondLastName', 'required')">El {{userFieldsConstants.SECONDLASTNAME}} es requerido</mat-error>
+                        <mat-error *ngIf="hasError('secondLastName', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <mat-label>{{userFieldsConstants.DATEBIRTH}}</mat-label>
+                        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="dateOfBirth" formControlName="dateOfBirth" id="dateOfBirth" class="form_input-container">
+                        <mat-hint>Mes/Dia/Año</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+                        <mat-datepicker #dateOfBirth></mat-datepicker>
+                        <mat-error *ngIf="hasError('dateOfBirth', 'required')">La {{userFieldsConstants.DATEBIRTH}} es requerida</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{userFieldsConstants.EMAIL}}" type="email" formControlName="email" id="email" class="form_input-container">
+                        <mat-hint>No más de 1000 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('email', 'required')">El {{userFieldsConstants.EMAIL}} es requerido</mat-error>
+                        <mat-error *ngIf="hasError('email', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="{{userConstants.PASSWORD}}" type="password" formControlName="password" id="password" class="form_input-container">
+                        <mat-hint>No más de 50 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('password', 'maxlength')">Tienes más de 50 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <mat-label>{{userFieldsConstants.ROLE}}</mat-label>
+                        <mat-select formControlName="role" id="role" class="form_input-container">
+                            <mat-option *ngFor="let role of roles | keyvalue" [value]="role.value">{{role.value}}</mat-option>
+                        </mat-select>
+                        <mat-hint>El {{userFieldsConstants.ROLE}} es requerido</mat-hint>
+                        <mat-error *ngIf="hasError('role', 'required')">El {{userFieldsConstants.ROLE}} es requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div class="form_container">
+            <div class="form_input form_container">
+                <div>
+                    <button *ngIf="isEditing || isCreating" class="mat-raised-button button_save" (click)="save()"
+                            [disabled]="!form.valid">
+                        {{commonConstants.SAVE}}
+                    </button>
+                </div>
+                <div>
+                    <button *ngIf="isEditing" class="mat-raised-button button_close"
+                            (click)="enableDisableForm()">
+                        {{commonConstants.CANCEL}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

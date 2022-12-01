@@ -1,0 +1,19 @@
+<h1 mat-dialog-title class="dialog_title">{{action}} {{model}}</h1>
+<mat-dialog-content>
+  <div class="dialog_container">
+    <h2 class="message">Estas seguro de eliminar a {{name}}?</h2>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="dialog_container dialog_container-button">
+    <button class="mat-raised-button mat-primary button_action"
+            (click)="doAction()">
+        {{action}}
+    </button>
+    <button class="mat-raised-button button_close"
+            (click)="closeDialog()">
+        Cancelar
+    </button>
+</div>
+</mat-dialog-actions>
+

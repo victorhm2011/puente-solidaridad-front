@@ -1,0 +1,22 @@
+@import "../../../../assets/scss/mixins";
+@import "../../../../assets/scss/variables";
+
+.tabs {
+
+    &_container {
+        background-color: $secondary-background;
+    }
+}
+
+.mat-tab-label {
+    color: $secondary-background;
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+    background: $secondary-background !important;
+}
+
+.mat-tab-group {
+    background-color: $first-primary-color;
+}

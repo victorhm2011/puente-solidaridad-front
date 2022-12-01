@@ -1,0 +1,85 @@
+<div>
+    <mat-toolbar>
+        <h4 class="title">{{title}}</h4>
+        <a (click)="enableDisableForm()">
+            <mat-icon class="button_edit">edit</mat-icon>
+        </a>
+        <a (click)="openDeleteDialog(physician)">
+            <mat-icon class="button_delete">delete</mat-icon>
+        </a>
+    </mat-toolbar>
+    <div>
+        <div [formGroup]="form">
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Nombre" type="text" formControlName="name" id="name" class="form_input-container">
+                        <mat-hint>No más de 500 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('name', 'required')">El nombre es requerido</mat-error>
+                        <mat-error *ngIf="hasError('name', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+           
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Apellido Paterno" type="text" formControlName="firstLastName" id="firstLastName" class="form_input-container">
+                        <mat-hint>No más de 500 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('firstLastName', 'required')">El Apellido Paterno es requerido</mat-error>
+                        <mat-error *ngIf="hasError('firstLastName', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Apellido Materno" type="text" formControlName="secondLastName" id="secondLastName" class="form_input-container">
+                        <mat-hint>No más de 500 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('secondLastName', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Hospital" type="text" formControlName="hospital" id="hospital" class="form_input-container">
+                        <mat-hint>No más de 500 carácteres</mat-hint>
+                        <mat-error *ngIf="hasError('hospital', 'required')">El hospital es requerida</mat-error>
+                        <mat-error *ngIf="hasError('hospital', 'maxlength')">Tienes más de 500 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <div class="form_input">
+                    <mat-form-field class="form_input-field">
+                        <input matInput placeholder="Teléfono" type="number" formControlName="phone" id="phone" class="form_input-container">
+                        <mat-hint>No más de 50 números</mat-hint>
+                        <mat-error *ngIf="hasError('phone', 'required')">El teléfono es requerido</mat-error>
+                        <mat-error *ngIf="hasError('phone', 'maxlength')">Tienes más de 50 números</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div class="form_container">
+            <div class="form_input form_container">
+                <div>
+                    <button *ngIf="isEditing" class="mat-raised-button button_save" (click)="save()"
+                            [disabled]="!form.valid">
+                        Guardar
+                    </button>
+                </div>
+                <div>
+                    <button *ngIf="isEditing" class="mat-raised-button button_close"
+                            (click)="enableDisableForm()">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

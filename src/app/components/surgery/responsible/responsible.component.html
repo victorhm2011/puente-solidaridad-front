@@ -1,0 +1,51 @@
+<h2 mat-dialog-title class="form_title">{{surgeryConstants.NEWRESPONSIBLE}}</h2>
+<mat-dialog-content [formGroup]="form">
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{surgeryConstants.RESPONSIBLE}}" type="text" formControlName="responsibleName" id="responsibleName" class="form_input-container">
+            <mat-hint>No más de 1000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('responsibleName', 'required')">El {{surgeryConstants.RESPONSIBLE}} es requerido</mat-error>
+            <mat-error *ngIf="hasError('responsibleName', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{surgeryConstants.INSTITUTION}}" type="text" formControlName="institution" id="institution" class="form_input-container">
+            <mat-hint>No más de 1000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('institution', 'required')">La {{surgeryConstants.INSTITUTION}} es requerida</mat-error>
+            <mat-error *ngIf="hasError('institution', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{surgeryConstants.ADDRESS}}" type="text" formControlName="responsibleAddress" id="responsibleAddress" class="form_input-container">
+            <mat-hint>No más de 1000 carácteres</mat-hint>
+            <mat-error *ngIf="hasError('responsibleAddress', 'required')">La {{surgeryConstants.ADDRESS}} es requerida</mat-error>
+            <mat-error *ngIf="hasError('responsibleAddress', 'maxlength')">Tienes más de 1000 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form_container">
+        <mat-form-field class="form_input-field">
+            <input matInput placeholder="{{surgeryConstants.PHONE}}" type="text" formControlName="responsiblePhone" id="responsiblePhone" class="form_input-container">
+            <mat-hint>No más de 100 números</mat-hint>
+            <mat-error *ngIf="hasError('responsiblePhone', 'maxlength')">Tienes más de 100 carácteres</mat-error>
+        </mat-form-field>
+    </div>
+    
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="form_container form_container-button">
+        <button class="mat-raised-button mat-primary button_save"
+                (click)="save()" [disabled]="!form.valid">
+            {{commonConstants.ADD}}
+        </button>
+        <button class="mat-raised-button button_close"
+                (click)="close()">
+            {{commonConstants.CANCEL}}
+        </button>
+    </div>
+</mat-dialog-actions>

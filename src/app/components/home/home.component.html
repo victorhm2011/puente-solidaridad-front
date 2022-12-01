@@ -1,0 +1,12 @@
+<section class="home">
+    <app-header [isHome]="true"></app-header>
+    <div class="home_container">
+        <app-home-logo></app-home-logo>
+        <div class="home_categories">
+          <div *ngFor="let item of categories">
+            <app-home-card [category]=item></app-home-card>
+          </div>
+        </div>
+    </div>
+</section>
+
