@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  baseApiUrl: 'https://puente-solidaridad-patient.herokuapp.com/v1/',
-  basePatientUrl: 'https://puente-solidaridad-patient.herokuapp.com/v1/',
-  basePhysicianUrl: 'https://puente-solidaridad-physician.herokuapp.com/v1/',
-  baseAidUrl: 'https://puente-solidaridad-aid.herokuapp.com/v1/',
-  baseSurgeryUrl: 'https://puente-solidaridad-surgery.herokuapp.com/v1/',
+  baseApiUrl: 'https://puente-solidaridad-api.herokuapp.com/v1/',
+  basePatientUrl: 'https://puente-solidaridad-patients.herokuapp.com/v1/',
+  basePhysicianUrl: 'https://puente-solidaridad-physicians.herokuapp.com/v1/',
+  baseAidUrl: 'https://puente-solidaridad-aids.herokuapp.com/v1/',
+  baseSurgeryUrl: 'https://puente-solidaridad-surgerys.herokuapp.com/v1/',
 };
 
 /*
